@@ -1,6 +1,6 @@
 FROM cloudron/base:2.0.0@sha256:f9fea80513aa7c92fe2e7bf3978b54c8ac5222f47a9a32a7f8833edf0eb5a4f4
 
-RUN mkdir -p /app/code /app/pkg
+RUN mkdir -p /app/code
 WORKDIR /app/code
 
 RUN apt-get update && \
@@ -29,6 +29,6 @@ RUN echo -e 'try:\n\tfrom custom_settings import *\nexcept ImportError:\n\traise
 # Add cloudron_settings.py hook. That file is symlinked from /run/cloudron_settings.py to for example override database
 RUN echo -e 'try:\n\tfrom cloudron_settings import *\nexcept ImportError:\n\traise Exception("A cloudron_settings.py file is required to run this project")\n\n' >> /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
 
-ADD start.sh /app/pkg/
+ADD start.sh /app/code/
 
-CMD [ "/app/pkg/start.sh" ]
+CMD [ "/app/code/start.sh" ]
