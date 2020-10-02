@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Cannot use that due to virtual env issues
 # set -eu -o pipefail
 
 cd /app/code/
@@ -23,7 +24,31 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "${CLOUDRON_REDIS_URL}",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PARSER_CLASS": "redis.connection.HiredisParser",
+            "PASSWORD": "${CLOUDRON_REDIS_PASSWORD}",
+            "CONNECTION_POOL_KWARGS": {},
+        },
+        "KEY_PREFIX": "weblate",
+    },
+    "avatar": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/app/data/weblate/avatar-cache",
+        "TIMEOUT": 86400,
+        "OPTIONS": {"MAX_ENTRIES": 1000},
+    },
+}
+
 SITE_DOMAIN = "${CLOUDRON_APP_DOMAIN}"
+SECRET_KEY = "thissecretneedstochange"
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+ALLOWED_HOSTS = [ "${CLOUDRON_APP_DOMAIN}" ]
 EOF
 
 echo "=> Ensure custom_settings"
@@ -38,10 +63,8 @@ echo "=> Ensure admin"
 weblate createadmin
 
 echo "=> Build assets"
-weblate collectstatic
+weblate collectstatic --noinput
 weblate compress
 
 echo "=> Start webserver"
-weblate runserver
-
-read
+weblate runserver 0.0.0.0:8000

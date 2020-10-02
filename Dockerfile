@@ -8,14 +8,15 @@ RUN apt-get update && \
     libxml2-dev libxslt-dev libfreetype6-dev libjpeg-dev libz-dev libyaml-dev \
     libcairo-dev gir1.2-pango-1.0 libgirepository1.0-dev libacl1-dev libssl-dev \
     build-essential python3-gdbm python3-dev python3-pip python3-virtualenv virtualenv git \
-    tesseract-ocr libtesseract-dev libleptonica-dev && \
+    tesseract-ocr-all libtesseract-dev libleptonica-dev \
+    mercurial git-review git-svn && \
     rm -rf /var/cache/apt /var/lib/apt/lists /etc/ssh_host_*
 
 RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \
     pip install Weblate && \
     pip install psycopg2-binary && \
-    pip install ruamel.yaml aeidon boto3 zeep chardet tesserocr
+    pip install ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply hub
 
 RUN mv /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py && \
     sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' -i /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
@@ -28,6 +29,9 @@ RUN echo -e 'try:\n\tfrom custom_settings import *\nexcept ImportError:\n\traise
 
 # Add cloudron_settings.py hook. That file is symlinked from /run/cloudron_settings.py to for example override database
 RUN echo -e 'try:\n\tfrom cloudron_settings import *\nexcept ImportError:\n\traise Exception("A cloudron_settings.py file is required to run this project")\n\n' >> /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
+
+RUN echo -e 'LANG="C.UTF-8"' > /etc/default/locale
+ENV LC_ALL='C.UTF-8'
 
 ADD start.sh /app/code/
 
