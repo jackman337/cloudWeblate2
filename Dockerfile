@@ -14,12 +14,19 @@ RUN apt-get update && \
 
 RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \
-    pip install Weblate && \
-    pip install psycopg2-binary && \
-    pip install ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply hub
+    pip install Weblate "django-auth-ldap>=1.3.0" psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
 
 RUN mv /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py && \
-    sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' -i /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
+    sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' \
+        -e 's,^REGISTRATION_OPEN = .*$,REGISTRATION_OPEN = False,' \
+        # -e 's,^DEBUG = .*$,DEBUG = False,' \
+        -i /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
+
+# Get hub tool
+RUN curl -L https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz | tar zxvf - --strip-components=2 -C /usr/bin hub-linux-amd64-2.14.2/bin/hub
+
+# Get lab tool
+RUN curl -L https://github.com/zaquestion/lab/releases/download/v0.17.2/lab_0.17.2_linux_amd64.tar.gz | tar zxvf - -C /usr/bin lab
 
 # Prepare custom hooks
 RUN echo -e "import site\nsite.addsitedir('/run/')\nsite.addsitedir('/app/data/')\n" >> /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
