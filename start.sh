@@ -10,7 +10,7 @@ source /app/code/weblate-env/bin/activate
 
 echo "=> Ensure settings"
 cat > "/run/cloudron_settings.py" <<EOF
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
     "default": {
@@ -59,8 +59,11 @@ fi
 echo "=> Run migration"
 weblate migrate
 
-echo "=> Ensure admin"
-weblate createadmin
+if [[ ! -f /app/data/.admin_created ]]; then
+    echo "=> Ensure admin"
+    weblate createadmin --password "changeme123" --username "admin" --email "admin@cloudron.local"
+    touch /app/data/.admin_created
+fi
 
 echo "=> Build assets"
 weblate collectstatic --noinput
