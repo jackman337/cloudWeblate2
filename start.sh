@@ -5,8 +5,14 @@
 
 cd /app/code/
 
+echo "=> Ensure directories"
+mkdir -p /run/weblate /run/nginx
+
 echo "=> Setup virtual env"
 source /app/code/weblate-env/bin/activate
+
+echo "=> Generating nginx.conf"
+sed -e "s,##HOSTNAME##,${CLOUDRON_APP_DOMAIN}," /app/code/weblate.nginx  > /run/nginx.conf
 
 echo "=> Ensure settings"
 cat > "/run/cloudron_settings.py" <<EOF
@@ -104,5 +110,9 @@ echo "=> Build assets"
 weblate collectstatic --noinput
 weblate compress
 
-echo "=> Start webserver"
-weblate runserver 0.0.0.0:8000
+echo "=> Ensure permissions"
+chown -R cloudron:cloudron /app/data
+
+echo "=> Starting supervisor"
+exec /usr/bin/supervisord --configuration /etc/supervisor/supervisord.conf --nodaemon -i weblate
+

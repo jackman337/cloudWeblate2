@@ -5,10 +5,9 @@ WORKDIR /app/code
 
 RUN apt-get update && \
     apt-get install -y \
-    libxml2-dev libxslt-dev libfreetype6-dev libjpeg-dev libz-dev libyaml-dev \
-    libcairo-dev gir1.2-pango-1.0 libgirepository1.0-dev libacl1-dev libssl-dev \
-    build-essential python3-gdbm python3-dev python3-pip python3-virtualenv virtualenv git \
+    libz-dev libcairo-dev gir1.2-pango-1.0 libgirepository1.0-dev libacl1-dev \
     tesseract-ocr-all libtesseract-dev libleptonica-dev \
+    uwsgi-plugin-python3 python3-gdbm python3-virtualenv \
     mercurial git-review git-svn && \
     rm -rf /var/cache/apt /var/lib/apt/lists /etc/ssh_host_*
 
@@ -19,7 +18,7 @@ RUN virtualenv --python=python3 /app/code/weblate-env && \
 RUN mv /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py && \
     sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' \
         -e 's,^REGISTRATION_OPEN = .*$,REGISTRATION_OPEN = False,' \
-        # -e 's,^DEBUG = .*$,DEBUG = False,' \
+        -e 's,^DEBUG = .*$,DEBUG = False,' \
         -i /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
 
 # Get hub tool
@@ -27,6 +26,16 @@ RUN curl -L https://github.com/github/hub/releases/download/v2.14.2/hub-linux-am
 
 # Get lab tool
 RUN curl -L https://github.com/zaquestion/lab/releases/download/v0.17.2/lab_0.17.2_linux_amd64.tar.gz | tar zxvf - -C /usr/bin lab
+
+# Configure nginx logs
+RUN rm -rf /var/log/nginx && ln -s /run/nginx /var/log/nginx
+
+# Add supervisor configs
+ADD supervisor/* /etc/supervisor/conf.d/
+RUN ln -sf /run/weblate/supervisord.log /var/log/supervisor/supervisord.log
+
+# Add uwsgi config
+ADD weblate.ini /etc/uwsgi/apps-enabled/weblate.ini
 
 # Prepare custom hooks
 RUN echo -e "import site\nsite.addsitedir('/run/')\nsite.addsitedir('/app/data/')\n" >> /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py
@@ -40,6 +49,6 @@ RUN echo -e 'try:\n\tfrom cloudron_settings import *\nexcept ImportError:\n\trai
 RUN echo -e 'LANG="C.UTF-8"' > /etc/default/locale
 ENV LC_ALL='C.UTF-8'
 
-ADD start.sh /app/code/
+ADD weblate.nginx start.sh /app/code/
 
 CMD [ "/app/code/start.sh" ]
