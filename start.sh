@@ -6,7 +6,7 @@
 cd /app/code/
 
 echo "=> Ensure directories"
-mkdir -p /run/weblate /run/nginx
+mkdir -p /run/weblate /run/nginx /run/celery
 
 echo "=> Setup virtual env"
 source /app/code/weblate-env/bin/activate
@@ -111,7 +111,18 @@ weblate collectstatic --noinput
 weblate compress
 
 echo "=> Ensure permissions"
-chown -R cloudron:cloudron /app/data
+chown -R cloudron:cloudron /app/data /run/
+
+# options for the celery workers
+export CELERY_MAIN_OPTIONS=""
+export CELERY_NOTIFY_OPTIONS=""
+export CELERY_TRANSLATE_OPTIONS=""
+export CELERY_BACKUP_OPTIONS=""
+export CELERY_BEAT_OPTIONS=""
+export CELERY_WORKER_RUNNING=1
+export CELERY_TASK_ALWAYS_EAGER=False
+export CELERY_BROKER_URL="${CLOUDRON_REDIS_URL}"
+export CELERY_RESULT_BACKEND="${CELERY_BROKER_URL}"
 
 echo "=> Starting supervisor"
 exec /usr/bin/supervisord --configuration /etc/supervisor/supervisord.conf --nodaemon -i weblate
