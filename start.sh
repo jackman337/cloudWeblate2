@@ -16,6 +16,7 @@ sed -e "s,##HOSTNAME##,${CLOUDRON_APP_DOMAIN}," /app/code/weblate.nginx  > /run/
 
 echo "=> Ensure settings"
 cat > "/run/cloudron_settings.py" <<EOF
+# Postgres
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -28,6 +29,7 @@ DATABASES = {
     }
 }
 
+# Redis
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -48,48 +50,50 @@ CACHES = {
     },
 }
 
-SITE_DOMAIN = "${CLOUDRON_APP_DOMAIN}"
-SECRET_KEY = "thissecretneedstochange"
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
-ALLOWED_HOSTS = [ "${CLOUDRON_APP_DOMAIN}" ]
+# LDAP
+import ldap
+from django_auth_ldap.config import LDAPSearch, LDAPSearchUnion
 
 AUTHENTICATION_BACKENDS = (
     'django_auth_ldap.backend.LDAPBackend',
     'weblate.accounts.auth.WeblateUserBackend',
 )
 
-import ldap
-from django_auth_ldap.config import LDAPSearch, LDAPSearchUnion
-
-# LDAP server address
 AUTH_LDAP_SERVER_URI = '${CLOUDRON_LDAP_URL}'
-
-# DN to use for authentication
-# AUTH_LDAP_USER_DN_TEMPLATE = "cn=%(user)s,${CLOUDRON_LDAP_USERS_BASE_DN}"
-# Depending on your LDAP server, you might use a different DN
-# like:
-# AUTH_LDAP_USER_DN_TEMPLATE = "${CLOUDRON_LDAP_USERS_BASE_DN}"
-
-AUTH_LDAP_USER_SEARCH = LDAPSearchUnion(
-    LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(username=%(user)s)"),
-    LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(mail=%(user)s)"),
-)
-
 AUTH_LDAP_BIND_DN = "${CLOUDRON_LDAP_BIND_DN}"
 AUTH_LDAP_BIND_PASSWORD = "${CLOUDRON_LDAP_BIND_PASSWORD}"
+AUTH_LDAP_USER_SEARCH = LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(username=%(user)s)")
 
-# List of attributes to import from LDAP upon login
-# Weblate stores full name of the user in the full_name attribute
+# Below would be to allow username and email login, however this results in an attempt to create two distinct users
+# AUTH_LDAP_USER_SEARCH = LDAPSearchUnion(
+#     LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(username=%(user)s)"),
+#     LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(mail=%(user)s)"),
+# )
+
 AUTH_LDAP_USER_ATTR_MAP = {
-    # 'full_name': 'name',
-    # Use the following if your LDAP server does not have full name
-    # Weblate will merge them later
     'first_name': 'givenName',
     'last_name': 'sn',
-    # Email is required for Weblate (used in VCS commits)
     'email': 'mail',
 }
+
+# Email settings
+EMAIL_HOST = "${CLOUDRON_MAIL_SMTP_SERVER}"
+EMAIL_HOST_PASSWORD = "${CLOUDRON_MAIL_SMTP_PASSWORD}"
+EMAIL_HOST_USER = "${CLOUDRON_MAIL_SMTP_USERNAME}"
+EMAIL_PORT = ${CLOUDRON_MAIL_SMTP_PORT}
+
+# Other
+SITE_DOMAIN = "${CLOUDRON_APP_DOMAIN}"
+ALLOWED_HOSTS = [ "${CLOUDRON_APP_DOMAIN}" ]
+
+DEFAULT_FROM_EMAIL = "${CLOUDRON_MAIL_FROM}"
+SERVER_EMAIL = "${CLOUDRON_MAIL_FROM}"
+
+SECRET_KEY = "thissecretneedstochange"
+
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+
 EOF
 
 echo "=> Ensure custom_settings"
@@ -120,7 +124,6 @@ export CELERY_TRANSLATE_OPTIONS=""
 export CELERY_BACKUP_OPTIONS=""
 export CELERY_BEAT_OPTIONS=""
 export CELERY_WORKER_RUNNING=1
-export CELERY_TASK_ALWAYS_EAGER=False
 export CELERY_BROKER_URL="${CLOUDRON_REDIS_URL}"
 export CELERY_RESULT_BACKEND="${CELERY_BROKER_URL}"
 
