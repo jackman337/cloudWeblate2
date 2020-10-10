@@ -8,12 +8,12 @@ RUN apt-get update && \
     libz-dev libcairo-dev gir1.2-pango-1.0 libgirepository1.0-dev libacl1-dev \
     tesseract-ocr-all libtesseract-dev libleptonica-dev \
     uwsgi-plugin-python3 python3-gdbm python3-virtualenv \
-    mercurial git-review git-svn && \
+    mercurial git-svn && \
     rm -rf /var/cache/apt /var/lib/apt/lists /etc/ssh_host_*
 
 RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \
-    pip install Weblate "django-auth-ldap>=1.3.0" psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
+    pip install Weblate "django-auth-ldap>=1.3.0" git-review psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
 
 RUN mv /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py && \
     sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' \
