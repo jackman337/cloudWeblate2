@@ -57,30 +57,31 @@ CACHES = {
 }
 
 # LDAP
-import ldap
-from django_auth_ldap.config import LDAPSearch, LDAPSearchUnion
+if "${CLOUDRON_LDAP_URL}" != "":
+    import ldap
+    from django_auth_ldap.config import LDAPSearch, LDAPSearchUnion
 
-AUTHENTICATION_BACKENDS = (
-    'django_auth_ldap.backend.LDAPBackend',
-    'weblate.accounts.auth.WeblateUserBackend',
-)
+    AUTHENTICATION_BACKENDS = (
+        'django_auth_ldap.backend.LDAPBackend',
+        'weblate.accounts.auth.WeblateUserBackend',
+    )
 
-AUTH_LDAP_SERVER_URI = '${CLOUDRON_LDAP_URL}'
-AUTH_LDAP_BIND_DN = "${CLOUDRON_LDAP_BIND_DN}"
-AUTH_LDAP_BIND_PASSWORD = "${CLOUDRON_LDAP_BIND_PASSWORD}"
-AUTH_LDAP_USER_SEARCH = LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(username=%(user)s)")
+    AUTH_LDAP_SERVER_URI = "${CLOUDRON_LDAP_URL}"
+    AUTH_LDAP_BIND_DN = "${CLOUDRON_LDAP_BIND_DN}"
+    AUTH_LDAP_BIND_PASSWORD = "${CLOUDRON_LDAP_BIND_PASSWORD}"
+    AUTH_LDAP_USER_SEARCH = LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(username=%(user)s)")
 
-# Below would be to allow username and email login, however this results in an attempt to create two distinct users
-# AUTH_LDAP_USER_SEARCH = LDAPSearchUnion(
-#     LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(username=%(user)s)"),
-#     LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(mail=%(user)s)"),
-# )
+    # Below would be to allow username and email login, however this results in an attempt to create two distinct users
+    # AUTH_LDAP_USER_SEARCH = LDAPSearchUnion(
+    #     LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(username=%(user)s)"),
+    #     LDAPSearch("${CLOUDRON_LDAP_USERS_BASE_DN}", ldap.SCOPE_SUBTREE, "(mail=%(user)s)"),
+    # )
 
-AUTH_LDAP_USER_ATTR_MAP = {
-    'first_name': 'givenName',
-    'last_name': 'sn',
-    'email': 'mail',
-}
+    AUTH_LDAP_USER_ATTR_MAP = {
+        'first_name': 'givenName',
+        'last_name': 'sn',
+        'email': 'mail',
+    }
 
 # Email settings
 EMAIL_HOST = "${CLOUDRON_MAIL_SMTP_SERVER}"
