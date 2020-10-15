@@ -169,24 +169,28 @@ describe('Application life cycle test', function () {
     });
 
     // test update
-    // it('can install app', function () { execSync(`cloudron install --appstore-id net.freescout.cloudronapp --location ${LOCATION}`, EXEC_ARGS); });
-    // it('can get app information', getAppInfo);
-    // it('can login', login);
-    // it('can create mailbox', createMailbox);
-    // it('mailbox exists', mailboxExists);
-    // it('can logout', logout);
+    it('can install app', function () { execSync(`cloudron install --appstore-id ${app.manifest.id} --location ${LOCATION}`, EXEC_ARGS); });
+    it('can get app information', getAppInfo);
+    it('can user login', login.bind(null, USERNAME, PASSWORD));
+    it('can logout', logout);
+    it('can admin login', login.bind(null, ADMIN_EMAIL, ADMIN_PASSWORD));
+    it('can create project', createProject);
+    it('project exists', projectExists);
+    it('can logout', logout);
 
-    // it('can update', function () { execSync(`cloudron update --app ${app.id}`, EXEC_ARGS); });
+    it('can update', function () { execSync(`cloudron update --app ${app.id}`, EXEC_ARGS); });
 
-    // it('can login', login);
-    // it('mailbox exists', mailboxExists);
-    // it('can logout', logout);
+    it('can user login', login.bind(null, USERNAME, PASSWORD));
+    it('can logout', logout);
+    it('can admin login', login.bind(null, ADMIN_EMAIL, ADMIN_PASSWORD));
+    it('project exists', projectExists);
+    it('can logout', logout);
 
-    // it('uninstall app', function (done) {
-    //     // ensure we don't hit NXDOMAIN in the mean time
-    //     browser.get('about:blank').then(function () {
-    //         execSync(`cloudron uninstall --app ${app.id}`, EXEC_ARGS);
-    //         done();
-    //     });
-    // });
+    it('uninstall app', function (done) {
+        // ensure we don't hit NXDOMAIN in the mean time
+        browser.get('about:blank').then(function () {
+            execSync(`cloudron uninstall --app ${app.id}`, EXEC_ARGS);
+            done();
+        });
+    });
 });
