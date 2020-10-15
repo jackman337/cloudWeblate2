@@ -14,6 +14,12 @@ source /app/code/weblate-env/bin/activate
 echo "=> Generating nginx.conf"
 sed -e "s,##HOSTNAME##,${CLOUDRON_APP_DOMAIN}," /app/code/weblate.nginx  > /run/nginx.conf
 
+echo "=> Get secret key"
+if [[ ! -f /app/data/.secret_key ]]; then
+    /app/code/weblate-env/lib/python3.6/site-packages/weblate/examples/generate-secret-key > /app/data/.secret_key
+fi
+SECRET_KEY=$(</app/data/.secret_key)
+
 echo "=> Ensure settings"
 cat > "/run/cloudron_settings.py" <<EOF
 # Postgres
@@ -89,10 +95,13 @@ ALLOWED_HOSTS = [ "${CLOUDRON_APP_DOMAIN}" ]
 DEFAULT_FROM_EMAIL = "${CLOUDRON_MAIL_FROM}"
 SERVER_EMAIL = "${CLOUDRON_MAIL_FROM}"
 
-SECRET_KEY = "thissecretneedstochange"
+SECRET_KEY = "${SECRET_KEY}"
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
+
+ENABLE_HTTPS = True
+SESSION_COOKIE_SECURE = True
 
 EOF
 
