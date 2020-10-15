@@ -11,9 +11,11 @@ RUN apt-get update && \
     mercurial git-svn && \
     rm -rf /var/cache/apt /var/lib/apt/lists /etc/ssh_host_*
 
+ARG VERSION=4.3
+
 RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \
-    pip install Weblate "django-auth-ldap>=1.3.0" git-review psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
+    pip install Weblate==${VERSION} "django-auth-ldap>=1.3.0" git-review psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
 
 RUN mv /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.6/site-packages/weblate/settings.py && \
     sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' \
