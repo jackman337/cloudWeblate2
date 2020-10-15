@@ -131,6 +131,7 @@ echo "=> Ensure permissions"
 chown -R cloudron:cloudron /app/data /run/
 
 # options for the celery workers
+# TODO if required move them to a sourced customizable env file
 export CELERY_MAIN_OPTIONS=""
 export CELERY_NOTIFY_OPTIONS=""
 export CELERY_TRANSLATE_OPTIONS=""
@@ -142,4 +143,3 @@ export CELERY_RESULT_BACKEND="${CELERY_BROKER_URL}"
 
 echo "=> Starting supervisor"
 exec /usr/bin/supervisord --configuration /etc/supervisor/supervisord.conf --nodaemon -i weblate
-
