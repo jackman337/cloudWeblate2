@@ -1,3 +1,22 @@
 [0.1.0]
 * initial version
 
+[0.2.0]
+* Update Weblate to 4.3
+* Include user stats in the API.
+* Fixed component ordering on paginated pages.
+* Define source language for a glossary.
+* Rewritten support for GitHub and GitLab pull requests.
+* Fixed stats counts after removing suggestion.
+* Extended public user profile.
+* Fixed configuration of enforced checks.
+* Improve documentation about built-in backups.
+* Moved source language attribute from project to a component.
+* Add Vue I18n formatting check.
+* Generic placeholders check now supports regular expressions.
+* Improved look of matrix mode.
+* Machinery is now called automatic suggestions.
+* Added support for interacting with multiple GitLab or GitHub instances.
+* Extended API to cover project updates, unit updates and removals and glossaries.
+* Unit API now properly handles plural strings.
+
