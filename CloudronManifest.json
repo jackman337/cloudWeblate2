@@ -24,7 +24,7 @@
     "redis": {},
     "sendmail": {}
   },
-  "memoryLimit": 1610612736,
+  "memoryLimit": 2147483648,
   "documentationUrl": "https://cloudron.io/documentation/apps/weblate",
   "minBoxVersion": "5.3.0",
   "manifestVersion": 2
