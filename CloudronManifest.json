@@ -27,6 +27,7 @@
   "optionalSso": true,
   "memoryLimit": 2147483648,
   "documentationUrl": "https://cloudron.io/documentation/apps/weblate",
+  "forumUrl": "https://forum.cloudron.io/category/106/weblate",
   "minBoxVersion": "5.3.0",
   "manifestVersion": 2
 }
