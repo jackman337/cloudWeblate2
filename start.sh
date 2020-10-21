@@ -131,13 +131,14 @@ weblate compress
 echo "=> Ensure permissions"
 chown -R cloudron:cloudron /app/data /run/
 
+echo "=> Ensure and source celery config overrides"
 # options for the celery workers
-# TODO if required move them to a sourced customizable env file
-export CELERY_MAIN_OPTIONS=""
-export CELERY_NOTIFY_OPTIONS=""
-export CELERY_TRANSLATE_OPTIONS=""
-export CELERY_BACKUP_OPTIONS=""
-export CELERY_BEAT_OPTIONS=""
+if [[ ! -f /app/data/.celery.env ]]; then
+    echo -e 'export CELERY_MAIN_OPTIONS=""\nexport CELERY_NOTIFY_OPTIONS=""\nexport CELERY_TRANSLATE_OPTIONS=""\nexport CELERY_BACKUP_OPTIONS=""\nexport CELERY_BEAT_OPTIONS=""\n' > /app/data/.celery.env
+fi
+source /app/data/.celery.env
+
+# Required celery env vars
 export CELERY_WORKER_RUNNING=1
 export CELERY_BROKER_URL="${CLOUDRON_REDIS_URL}"
 export CELERY_RESULT_BACKEND="${CELERY_BROKER_URL}"
