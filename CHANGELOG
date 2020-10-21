@@ -20,3 +20,7 @@
 * Extended API to cover project updates, unit updates and removals and glossaries.
 * Unit API now properly handles plural strings.
 
+[0.3.0]
+* Increase minimal memory limit
+* Add /app/data/.celery.env file to override worker options
+
