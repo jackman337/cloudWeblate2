@@ -25,7 +25,7 @@
     "sendmail": {}
   },
   "optionalSso": true,
-  "memoryLimit": 2147483648,
+  "memoryLimit": 3221225472,
   "documentationUrl": "https://docs.cloudron.io/apps/weblate",
   "forumUrl": "https://forum.cloudron.io/category/106/weblate",
   "minBoxVersion": "5.3.0",
