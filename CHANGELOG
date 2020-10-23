@@ -24,3 +24,15 @@
 * Increase minimal memory limit
 * Add /app/data/.celery.env file to override worker options
 
+[1.0.0]
+* Update Weblate to 4.3.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.3.1)
+* Improved automatic translation performance.
+* Fixed session expiry for authenticated users.
+* Add support for hiding version information.
+* Improve hooks compatibility with Bitbucket Server.
+* Improved translation memory updates performance.
+* Reduced memory usage.
+* Improved performance of matrix view.
+* Added confirmation before removing user from a project.
+
