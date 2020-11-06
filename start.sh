@@ -6,7 +6,7 @@
 cd /app/code/
 
 echo "=> Ensure directories"
-mkdir -p /run/weblate /run/nginx /run/celery
+mkdir -p /run/weblate /run/nginx
 
 echo "=> Setup virtual env"
 source /app/code/weblate-env/bin/activate
