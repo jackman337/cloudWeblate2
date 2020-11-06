@@ -36,3 +36,6 @@
 * Improved performance of matrix view.
 * Added confirmation before removing user from a project.
 
+[1.0.1]
+* Remove celery beat pidfile usage
+* Increase minimal memory limit
