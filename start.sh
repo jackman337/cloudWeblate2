@@ -132,9 +132,17 @@ echo "=> Ensure permissions"
 chown -R cloudron:cloudron /app/data /run/
 
 echo "=> Ensure and source celery config overrides"
-# options for the celery workers
+# make sure options for the celery workers exist
+export CELERY_MAIN_OPTIONS=""
+export CELERY_NOTIFY_OPTIONS=""
+export CELERY_TRANSLATE_OPTIONS=""
+export CELERY_BACKUP_OPTIONS=""
+export CELERY_BEAT_OPTIONS=""
+export CELERY_MEMORY_OPTIONS=""
+
+# source custom overrides
 if [[ ! -f /app/data/.celery.env ]]; then
-    echo -e 'export CELERY_MAIN_OPTIONS=""\nexport CELERY_NOTIFY_OPTIONS=""\nexport CELERY_TRANSLATE_OPTIONS=""\nexport CELERY_BACKUP_OPTIONS=""\nexport CELERY_BEAT_OPTIONS=""\nexport ENV_CELERY_MEMORY_OPTIONS=""\n' > /app/data/.celery.env
+    echo -e 'export CELERY_MAIN_OPTIONS=""\nexport CELERY_NOTIFY_OPTIONS=""\nexport CELERY_TRANSLATE_OPTIONS=""\nexport CELERY_BACKUP_OPTIONS=""\nexport CELERY_BEAT_OPTIONS=""\nexport CELERY_MEMORY_OPTIONS=""\n' > /app/data/.celery.env
 fi
 source /app/data/.celery.env
 
