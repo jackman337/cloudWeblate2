@@ -39,3 +39,7 @@
 [1.0.1]
 * Remove celery beat pidfile usage
 * Increase minimal memory limit
+
+[1.0.2]
+* Add new celery memory worker
+
