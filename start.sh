@@ -63,6 +63,7 @@ if "${CLOUDRON_LDAP_URL}" != "":
 
     AUTHENTICATION_BACKENDS = (
         'django_auth_ldap.backend.LDAPBackend',
+        'social_core.backends.email.EmailAuth',
         'weblate.accounts.auth.WeblateUserBackend',
     )
 
