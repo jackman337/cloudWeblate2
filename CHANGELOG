@@ -46,3 +46,28 @@
 [1.0.3]
 * Fix user invitation
 
+[1.1.0]
+* Update Weblate to 4.4
+* Improved validation when creating component.
+* Weblate now requires Django 3.1.
+* Added support for appearance customization in the management interface.
+* Fixed read only state handling in bulk edit.
+* Improved CodeMirror integration.
+* Added addon to remove blank strings from translation files.
+* The CodeMirror editor is now used for translations.
+* Syntax highlighting in translation editor for XML, HTML, Markdown and reStructuredText.
+* Highlight placeables in translation editor.
+* Improved support for non standard language codes.
+* Added alert on using ambiguous language codes.
+* User is now presented filtered list of languages when adding new translation.
+* Extended search capabilities for changes history.
+* Improved billing detail pages and libre hosting workflow.
+* Extended translation statistics API.
+* Improved other translations tab while translating.
+* Added tasks API.
+* Improved file upload performance.
+* Improved display of user defined special characters.
+* Improved auto translate performance.
+* Several minor user interface improvements.
+* Improved naming of ZIP downloads.
+* Added option for getting notifications on unwatched projects.
