@@ -109,6 +109,56 @@ SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
+DEFAULT_LOG = "console"
+DEFAULT_LOGLEVEL = "INFO"
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": True,
+    "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
+    "formatters": {
+        "syslog": {"format": "weblate[%(process)d]: %(levelname)s %(message)s"},
+        "simple": {"format": "[%(asctime)s: %(levelname)s/%(process)s] %(message)s"},
+        "logfile": {"format": "%(asctime)s %(levelname)s %(message)s"},
+        "django.server": {
+            "()": "django.utils.log.ServerFormatter",
+            "format": "[%(server_time)s] %(message)s",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "django.server": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "django.server",
+        }
+    },
+    "loggers": {
+        "django.request": {
+            "handlers": [DEFAULT_LOG],
+            "level": "ERROR",
+            "propagate": True,
+        },
+        "django.server": {
+            "handlers": ["django.server"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "weblate": {"handlers": [DEFAULT_LOG], "level": DEFAULT_LOGLEVEL},
+        # Logging VCS operations
+        "weblate.vcs": {"handlers": [DEFAULT_LOG], "level": DEFAULT_LOGLEVEL},
+        # Python Social Auth
+        "social": {"handlers": [DEFAULT_LOG], "level": DEFAULT_LOGLEVEL},
+        # Django Authentication Using LDAP
+        "django_auth_ldap": {"handlers": [DEFAULT_LOG], "level": DEFAULT_LOGLEVEL},
+        # SAML IdP
+        "djangosaml2idp": {"handlers": [DEFAULT_LOG], "level": DEFAULT_LOGLEVEL},
+    },
+}
+
 EOF
 
 echo "=> Ensure custom_settings"
