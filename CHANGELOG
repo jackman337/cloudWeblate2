@@ -71,3 +71,7 @@
 * Several minor user interface improvements.
 * Improved naming of ZIP downloads.
 * Added option for getting notifications on unwatched projects.
+
+[1.1.1]
+* Fix memory celery worker
+
