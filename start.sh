@@ -116,7 +116,7 @@ SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-# DEFAULT_LOGLEVEL = "INFO" <- overwritten in main file in Dockerfile so it may be overwritten by the user
+DEFAULT_LOGLEVEL = "INFO" # <- overwritten in main file in Dockerfile so it may be overwritten by the user
 DEFAULT_LOG = "console"
 LOGGING = {
     "version": 1,
