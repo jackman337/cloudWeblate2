@@ -22,6 +22,13 @@ SECRET_KEY=$(</app/data/.secret_key)
 
 echo "=> Ensure settings"
 cat > "/run/cloudron_settings.py" <<EOF
+
+# Add custom_settings.py hook. That file is symlinked from /app/data/custom_settings.py to for example override user settings
+try:
+    from custom_settings import *
+except ImportError:
+    raise Exception("A custom_settings.py file is required to run this project")
+
 # Postgres
 DATABASES = {
     "default": {
@@ -109,8 +116,8 @@ SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
+# DEFAULT_LOGLEVEL = "INFO" <- overwritten in main file in Dockerfile so it may be overwritten by the user
 DEFAULT_LOG = "console"
-DEFAULT_LOGLEVEL = "INFO"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
