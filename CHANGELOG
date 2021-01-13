@@ -75,3 +75,19 @@
 [1.1.1]
 * Fix memory celery worker
 
+[1.1.2]
+* Update Weblate to 4.4.1
+* Fixed reverting plural changes.
+* Fixed displaying help for project settings.
+* Improved administration of users.
+* Improved handling of context in monolingual PO files.
+* Fixed cleanup addon behavior with HTML, ODF, IDML and Windows RC formats.
+* Fixed parsing of location from CSV files.
+* Use content compression for file downloads.
+* Improved user experience on importing from ZIP file.
+* Improved detection of file format for uploads.
+* Avoid duplicate pull requests on Pagure.
+* Improved performance when displaying ghost translations.
+* Reimplemented translation editor to use native browser textarea.
+* Fixed cleanup addon breaking adding new strings.
+* Added API for addons.
