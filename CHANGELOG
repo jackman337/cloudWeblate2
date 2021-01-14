@@ -91,3 +91,8 @@
 * Reimplemented translation editor to use native browser textarea.
 * Fixed cleanup addon breaking adding new strings.
 * Added API for addons.
+
+[1.1.3]
+* Update Weblate to 4.4.2
+* Fixed corruption of one distributed MO file.
+
