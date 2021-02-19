@@ -16,7 +16,7 @@ sed -e "s,##HOSTNAME##,${CLOUDRON_APP_DOMAIN}," /app/code/weblate.nginx  > /run/
 
 echo "=> Get secret key"
 if [[ ! -f /app/data/.secret_key ]]; then
-    /app/code/weblate-env/lib/python3.6/site-packages/weblate/examples/generate-secret-key > /app/data/.secret_key
+    /app/code/weblate-env/lib/python3.8/site-packages/weblate/examples/generate-secret-key > /app/data/.secret_key
 fi
 SECRET_KEY=$(</app/data/.secret_key)
 

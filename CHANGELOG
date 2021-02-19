@@ -98,6 +98,7 @@
 
 [1.2.0]
 * Update Weblate to 4.5
+* Update to base image v3
 * Added support for lua-format used in gettext PO.
 * Added support for sharing a component between projects.
 * Fixed multiple unnamed variables check behavior with multiple format flags.
