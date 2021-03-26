@@ -138,3 +138,17 @@
 * Improved bulk edit performance.
 * Fixed preserving "Needs editing" and "Approved" states for ODF files.
 * Improved interface for customizing translation-file downloads
+
+[1.2.2]
+* Update Weblate to 4.5.2
+* Configurable schedule for automatic translation.
+* Added Lua format check.
+* Ignore format strings in the :ref:check-duplicate check.
+* Allow uploading screenshot from a translate page.
+* Added forced file synchronization to the repository maintenance.
+* Fixed automatic suggestions for languages with a longer code.
+* Improved performance when adding new strings.
+* Several bug fixes in quality checks.
+* Several performance improvements.
+* Added integration with :ref:discover-weblate.
+* Fixed checks behavior with read-only strings.
