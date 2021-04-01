@@ -152,3 +152,10 @@
 * Several performance improvements.
 * Added integration with :ref:discover-weblate.
 * Fixed checks behavior with read-only strings.
+
+[1.2.3]
+* Update Weblate to 4.5.3
+* Fixed metrics collection.
+* Fixed possible crash when adding strings.
+* Improved search query examples.
+* Fixed possible loss of newly added strings on replace upload.
