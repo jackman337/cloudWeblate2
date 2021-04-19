@@ -159,3 +159,25 @@
 * Fixed possible crash when adding strings.
 * Improved search query examples.
 * Fixed possible loss of newly added strings on replace upload.
+
+[1.2.4]
+* Update Weblate to 4.6
+* The auto_translate management command has now a parameter for specifying translation mode.
+* Added support for TXT files.
+* Added trends and metrics for all objects.
+* Added support for direct copying text from secondary languages.
+* Added date filtering when browsing changes.
+* Improved activity charts.
+* Sender for contact form e-mails can now be configured.
+* Improved parameters validation in component creation API.
+* The rate limiting no longer applies to superusers.
+* Improved automatic translation addon performance and reliability.
+* The rate limiting now can be customized in the Docker container.
+* API for creating components now automatically uses Weblate internal URLs.
+* Simplified state indication while listing strings.
+* Password hashing now uses Argon2 by default.
+* Simplified progress bars indicating translation status.
+* Renamed Add missing languages addon to clarify the purpose.
+* Fixed saving string state to XLIFF.
+* Added language-wide search.
+* Initial support for scaling horizontall the Docker deployment.
