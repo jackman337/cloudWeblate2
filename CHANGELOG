@@ -203,3 +203,21 @@
 * Improved metrics performance.
 * Fixed possible bug in saving glossaries.
 * Fixed consistency check behavior on languages with different plural rules.
+
+[1.3.0]
+* Update Weblate to 4.7
+* Improved configuration health check.
+* Added support for object-pascal-format used in gettext PO, see :ref:check-object-pascal-format.
+* Renamed :guilabel:Nearby keys to :guilabel:Similar keys to better describe the purpose.
+* Added support for :ref:mi18n-lang.
+* Improved SAML authentication integration.
+* Fixed :ref:vcs-gerrit integration to better handle corner cases.
+* Weblate now requires Django 3.2.
+* Fixed inviting users when e-mail authentication is disabled.
+* Improved language definitions.
+* Added support for blocking users from contributing to a project.
+* Fixed automatic creation of glossary languages.
+* Extended documentation about add-ons.
+* Performance improvements for components with linked repositories.
+* Added support for free DeepL API.
+* The user management no longer needs Django admin interface.
