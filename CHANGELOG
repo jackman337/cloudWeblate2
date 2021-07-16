@@ -229,3 +229,11 @@
 * Added rate limiting on creating new projects.
 * Improved performance of file updates.
 
+[1.3.2]
+* Update Weblate to 4.7.2
+* Support more language aliases to be configured on a project.
+* Fixed search string validation in API.
+* Fixed Git exporter URLs after a domain change.
+* Fixed cleanup addon for Windows RC files.
+* Fixed possible crash on Xliff updating.
+
