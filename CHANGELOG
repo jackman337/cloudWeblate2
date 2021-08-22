@@ -237,3 +237,17 @@
 * Fixed cleanup addon for Windows RC files.
 * Fixed possible crash on Xliff updating.
 
+[1.4.0]
+* Update Weblate to 4.8.0
+* Added support for Apple stringsdict format.
+* The exact search operator is now case-sensitive on PostgreSQL.
+* Fixed saving glossary explanations in some cases.
+* Documentation improvements.
+* Performance improvements.
+* Improved squash add-on compatibility with Gerrit.
+* Fixed adding strings to a monolingual glossary components.
+* Improved performance in hadling variants.
+* Fixed squash add-on sometimes skipping parsing upstream changes.
+* Preserve file extension on download.
+* Added support for the Fluent format.
+* Add support for using tabs to indent JSON formats.
