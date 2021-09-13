@@ -251,3 +251,19 @@
 * Preserve file extension on download.
 * Added support for the Fluent format.
 * Add support for using tabs to indent JSON formats.
+
+[1.4.1]
+* Update Weblate to 4.8.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.8.1)
+* Fixed user removal in Django admin interface.
+* Document add-on parameters in more detail.
+* Fixed JavaScript error on glossary.
+* Add limit to number of matches in consistency check.
+* Improve placeholders handling in machine translations.
+* Fixed creating add-ons using API.
+* Added :setting:PRIVACY_URL setting to add privacy policy link to the footer.
+* Hide member e-mail addresses from project admins.
+* Improved gettext PO merging in case of conflicts.
+* Improved glossary highlighting.
+* Improved safe-html flag behavior with XML checks.
+* Fixed commit messages on linked components.
