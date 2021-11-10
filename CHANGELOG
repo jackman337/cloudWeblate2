@@ -267,3 +267,24 @@
 * Improved glossary highlighting.
 * Improved safe-html flag behavior with XML checks.
 * Fixed commit messages on linked components.
+
+[1.5.0]
+* Update Weblate to 4.9
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.9)
+* Provide more details for history events.
+* Improved rendering of history.
+* Improved performance of the translation pages.
+* Added support for restricting translation file download.
+* The safe-html can now understand Markdown when used with md-text.
+* The max-length tag now ignores XML markup when used with xml-text.
+* Fixed dimensions of rendered texts in :ref:check-max-size.
+* Lowered app store title length to 30 to assist with upcoming Google policy changes.
+* Added support for customising ssh invocation via :setting:SSH_EXTRA_ARGS.
+* Added checks for ICU MessageFormat.
+* Improved error condition hadling in machine translation backends.
+* Highlight unusual whitespace characters in the strings.
+* Added option to stay on translated string while editing.
+* Added support for customising borg invocation via :setting:BORG_EXTRA_ARGS.
+* Fixed generating of MO files for monolingual translations.
+* Added API endpoint to download all component translations in a ZIP file.
+* Added support for resending e-mail invitation from the management interface.
