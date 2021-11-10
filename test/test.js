@@ -138,7 +138,7 @@ describe('Application life cycle test', function () {
     it('project exists', projectExists);
     it('can logout', logout);
 
-    it('uninstall app', async function (done) {
+    it('uninstall app', async function () {
         // ensure we don't hit NXDOMAIN in the mean time
         await browser.get('about:blank');
         execSync(`cloudron uninstall --app ${app.id}`, EXEC_ARGS);
@@ -162,7 +162,7 @@ describe('Application life cycle test', function () {
     it('project exists', projectExists);
     it('can logout', logout);
 
-    it('uninstall app', async function (done) {
+    it('uninstall app', async function () {
         // ensure we don't hit NXDOMAIN in the mean time
         browser.get('about:blank');
         await execSync(`cloudron uninstall --app ${app.id}`, EXEC_ARGS);
