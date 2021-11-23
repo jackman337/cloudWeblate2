@@ -183,7 +183,7 @@ if [[ ! -f /app/data/.admin_created ]]; then
 fi
 
 echo "=> Build assets"
-weblate collectstatic --noinput
+weblate collectstatic --noinput --clear --link
 weblate compress
 
 echo "=> Ensure permissions"
