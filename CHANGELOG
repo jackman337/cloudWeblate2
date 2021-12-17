@@ -298,3 +298,19 @@
 * Fixed statistics display when adding new translations.
 * Mitigate issues with GitHub SSH key change.
 
+[1.6.0]
+* Update Weblate to 4.10.0
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.10)
+* Update base image to 3.2.0
+* Added support for formality and placeholders with DeepL.
+* Bulk edit and search and replace are now available on project and language level.
+* Added filtering to search and replace.
+* Fixed: "Perform automatic translation" privilege is no longer part of the Languages group.
+* "Perform automatic translation" is in the Administration and the new Automatic translation group.
+* Fixed generating XLSX files with special chars.
+* Added ability to the GitHub authentication backend to check if the user belongs to a specific GitHub organization or team.
+* Improved feedback on invalid parameters passed to API.
+* Added support for project scoped access tokens for API.
+* Fixed string removal in some cases.
+* Fixed translating newly added strings.
+* Label automatically translated strings to ease their filtering.

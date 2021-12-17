@@ -1,4 +1,4 @@
-This app packages Weblate <upstream>4.9.1</upstream>
+This app packages Weblate <upstream>4.10.0</upstream>
 
 ### Description
 
