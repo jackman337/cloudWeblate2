@@ -314,3 +314,14 @@
 * Fixed string removal in some cases.
 * Fixed translating newly added strings.
 * Label automatically translated strings to ease their filtering.
+
+[1.6.1]
+* Update Weblate to 4.10.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.10.1)
+* Documented changes introduced by upgrading to Django 4.0.
+* Fixed displaying of :guilabel:Automatically translated label.
+* Fixed API display of branch in components with a shared repository.
+* Improved analysis on the failed push alert.
+* Fixed manually editing page when browsing changes.
+* Improved accuracy of :ref:check-kashida.
+
