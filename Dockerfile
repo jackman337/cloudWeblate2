@@ -5,16 +5,18 @@ WORKDIR /app/code
 
 RUN apt-get update && \
     apt-get install -y \
-    libz-dev libcairo-dev gir1.2-pango-1.0 libgirepository1.0-dev libacl1-dev \
+    libssl-dev libz-dev libcairo-dev gir1.2-pango-1.0 libgirepository1.0-dev libacl1-dev \
     tesseract-ocr-all libtesseract-dev libleptonica-dev \
     uwsgi-plugin-python3 python3-gdbm python3-virtualenv \
     mercurial git-svn && \
     rm -rf /var/cache/apt /var/lib/apt/lists /etc/ssh_host_*
 
-ARG VERSION=4.10.1
+ARG VERSION=4.11
 
 RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \
+    # pkgconfig required for borgbackup as dependency of weblate since 4.11
+    pip install pkgconfig && \
     pip install Weblate==${VERSION} "django-auth-ldap>=1.3.0" git-review psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
 
 RUN mv /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py && \

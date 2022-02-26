@@ -325,3 +325,7 @@
 * Fixed manually editing page when browsing changes.
 * Improved accuracy of :ref:check-kashida.
 
+[1.6.2]
+* Update Weblate to 4.11
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.11)
+

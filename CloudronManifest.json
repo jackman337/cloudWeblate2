@@ -1,6 +1,7 @@
 {
   "id": "org.weblate.cloudronapp",
-  "version": "1.6.1",
+  "version": "1.6.2",
+  "upstreamVersion": "4.11",
   "title": "Weblate",
   "tagline": "Web-based continuous localization",
   "website": "https://weblate.org",
@@ -28,6 +29,6 @@
   "memoryLimit": 3758096384,
   "documentationUrl": "https://docs.cloudron.io/apps/weblate",
   "forumUrl": "https://forum.cloudron.io/category/106/weblate",
-  "minBoxVersion": "5.3.0",
+  "minBoxVersion": "7.1.2",
   "manifestVersion": 2
 }
