@@ -1,7 +1,7 @@
 daemon off;
 worker_processes auto;
 pid /run/nginx.pid;
-error_log stderr;
+error_log /dev/stdout info;
 
 events {
     worker_connections 768;
@@ -25,6 +25,7 @@ http {
     uwsgi_temp_path /run/uwsgi_temp;
 
     access_log /dev/stdout;
+    error_log /dev/stdout info;
 
     gzip on;
     gzip_disable "msie6";
