@@ -339,3 +339,19 @@
 * Fixed user mention suggestions display.
 * The project tokens access can now be customized.
 
+[1.7.0]
+* Update Weblate to 4.12
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.12)
+* Added support for Amharic in :ref:check-end-stop.
+* Added support for Burmese in :ref:check-end-question.
+* Extended options of the :ref:addon-weblate.generate.pseudolocale add-on.
+* Added ignore-all-checks flag to ignore all quality checks on a string.
+* Avoid :ref:addon-weblate.generate.pseudolocale add-on to trigger failing checks.
+* Added support for :ref:vcs-gitea.
+* Added Linux style language code to :ref:component-language_code_style.
+* Added support for rebuilding project translation memory.
+* Improved API for creating components from a file.
+* Add copy and clone buttons to other translations.
+* Make merge request message configurable at component level.
+* Improved maximal length restriction behavior with XML tags.
+* Fixed loading Fluent files with additional comments.
