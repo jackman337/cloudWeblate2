@@ -355,3 +355,13 @@
 * Make merge request message configurable at component level.
 * Improved maximal length restriction behavior with XML tags.
 * Fixed loading Fluent files with additional comments.
+
+[1.7.1]
+* Update Weblate to 4.12.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.12.1)
+* Fixed pull request message title.
+* Improved syntax error handling in Fluent format.
+* Fixed avatar display in notification e-mails.
+* Add support for web monetization.
+* Fixed removal of stale source strings when removing translations.
+
