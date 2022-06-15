@@ -11,7 +11,7 @@ RUN apt-get update && \
     mercurial git-svn && \
     rm -rf /var/cache/apt /var/lib/apt/lists /etc/ssh_host_*
 
-ARG VERSION=4.12.2
+ARG VERSION=4.13
 
 RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \
