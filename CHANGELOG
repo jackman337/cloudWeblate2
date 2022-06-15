@@ -366,10 +366,21 @@
 * Fixed removal of stale source strings when removing translations.
 
 [1.7.2]
-* Update Weblate to 2.14.2
+* Update Weblate to 4.12.2
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.12.2)
 * Fixed rebuilding project translation memory for some components.
 * Fixed sorting components by untranslated strings.
 * Fixed possible loss of translations while adding new language.
 * Ensure Weblate SSH key is generated during migrations.
+
+[1.8.0]
+* Update Weblate to 4.13
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.13)
+* Changed behavior of updating language names.
+* Added pagination to projects listing.
+* API for creating new units now returns information about newly created unit.
+* Component discovery now supports configuring an intermediate language.
+* Added fixed encoding variants to CSV formats.
+* Changed handling of context and location for some formats to better fit underlying implementation.
+* Added support for ResourceDictionary format.
 
