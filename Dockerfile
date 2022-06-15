@@ -36,21 +36,21 @@ RUN curl -L https://github.com/zaquestion/lab/releases/download/v0.17.2/lab_0.17
 RUN rm -rf /var/log/nginx && ln -s /run/nginx /var/log/nginx
 
 # Add supervisor configs
-ADD supervisor/* /etc/supervisor/conf.d/
+COPY supervisor/* /etc/supervisor/conf.d/
 RUN ln -sf /run/weblate/supervisord.log /var/log/supervisor/supervisord.log
 
 # Add uwsgi config
-ADD weblate.ini /etc/uwsgi/apps-enabled/weblate.ini
+COPY weblate.ini /etc/uwsgi/apps-enabled/weblate.ini
 
 # Prepare custom hooks
-RUN echo -e "import site\nsite.addsitedir('/run/')\nsite.addsitedir('/app/data/')\n" >> /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py
+RUN echo -e "import site\nsite.addsitedir('/app/code/')\nsite.addsitedir('/app/data/')\n" >> /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py
 
-# Add cloudron_settings.py hook. That file is symlinked from /run/cloudron_settings.py to for example override database
+# This will run /app/code/cloudron_settings.py
 RUN echo -e 'try:\n\tfrom cloudron_settings import *\nexcept ImportError:\n\traise Exception("A cloudron_settings.py file is required to run this project")\n\n' >> /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py
 
 RUN echo -e 'LANG="C.UTF-8"' > /etc/default/locale
 ENV LC_ALL='C.UTF-8'
 
-ADD weblate.nginx start.sh /app/code/
+COPY cloudron_settings.py weblate.nginx start.sh /app/code/
 
 CMD [ "/app/code/start.sh" ]
