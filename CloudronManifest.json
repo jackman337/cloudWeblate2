@@ -23,12 +23,12 @@
     "ldap": {},
     "postgresql": {},
     "redis": {},
-    "sendmail": {}
+    "sendmail": { "supportsDisplayName": false }
   },
   "optionalSso": true,
   "memoryLimit": 3758096384,
   "documentationUrl": "https://docs.cloudron.io/apps/weblate",
   "forumUrl": "https://forum.cloudron.io/category/106/weblate",
-  "minBoxVersion": "7.1.2",
+  "minBoxVersion": "7.2.0",
   "manifestVersion": 2
 }
