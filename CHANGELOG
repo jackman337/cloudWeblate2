@@ -384,3 +384,15 @@
 * Changed handling of context and location for some formats to better fit underlying implementation.
 * Added support for ResourceDictionary format.
 
+[1.8.1]
+* Update Weblate to 4.13.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.13.1)
+* Fixed tracking suggestions in history.
+* Fixed parsing reverse proxy info from Cloudflare.
+* Make parse error lock a component from translating.
+* Fixed configuring intermediate file in the discovery add-on.
+* Fixed DeepL translations behvior with placeholders.
+* Fixed untranslating strings via API.
+* Added support for removing user from a group via API.
+* Fixed audit log for user invitation e-mails.
+
