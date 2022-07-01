@@ -17,7 +17,7 @@ RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \
     # pkgconfig required for borgbackup as dependency of weblate since 4.11
     pip install pkgconfig && \
-    pip install Weblate==${VERSION} "django-auth-ldap>=1.3.0" git-review psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
+    pip install --no-binary cffi Weblate==${VERSION} "django-auth-ldap>=1.3.0" git-review psycopg2-binary ruamel.yaml aeidon boto3 zeep chardet tesserocr iniparse hglib phply
 
 RUN mv /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py && \
     sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' \
