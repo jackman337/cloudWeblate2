@@ -398,3 +398,22 @@
 
 [1.8.2]
 * Install all optional dependencies for better compatibility
+
+[1.9.0]
+* Update Weblate to 4.14
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.14)
+* Track add-on changes in a history.
+* Fixed parsing translation from Windows RC, HTML and text files.
+* Extended language code style configuration options.
+* Added support for pluralse updated in recent CLDR releases.
+* Reduced memory usage while updating components with a lot of
+* translations.
+* Added support for translation domain in SAP Translation Hub.
+* Allow absolute links in source string locations.
+* Improved operation behind some reverse proxies.
+* Exteded API to cover translation memory.
+* Improved document translation workflow.
+* Improved reliability of HTML and text files translation.
+* Added support for project level backups.
+* Improved performance and memory usage of translation memory lookups.
+
