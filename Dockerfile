@@ -20,7 +20,7 @@ RUN virtualenv --python=python3 /app/code/weblate-env && \
     pip install --no-binary cffi Weblate[all]==${VERSION}
 
 RUN mv /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py && \
-    sed -e 's,^BASE_DIR = .*$,BASE_DIR = "/app/data/weblate/",' \
+    sed -e 's,^DATA_DIR = .*$,DATA_DIR = "/app/data/weblate/data",' \
         -e 's,^REGISTRATION_OPEN = .*$,REGISTRATION_OPEN = False,' \
         -e 's,^DEBUG = .*$,DEBUG = False,' \
         -e 's,^DEFAULT_LOGLEVEL = .*$,DEFAULT_LOGLEVEL = "INFO",' \
