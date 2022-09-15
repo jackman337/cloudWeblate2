@@ -417,3 +417,21 @@
 * Added support for project level backups.
 * Improved performance and memory usage of translation memory lookups.
 
+[1.9.1]
+* Update Weblate to 4.14.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.14.1)
+* Fixed generating project backups in some situations.
+* Improved error reporting on file upload.
+* Fetch all user verified e-mails from GitHub during authentication.
+* Avoid matching glossary terms on context or keys.
+* Added notifications for string removals.
+* Improved management of untranslatable terms in glossary.
+* List number of team members on team management page.
+* Add group management interface.
+* Always show review stats when reviews are enabled.
+* Added searching support in units API.
+* Fixed progress bar display for read-only strings in the review
+* workflow.
+* Improved Burmese punctuation check.
+* Fixed garbage collecting of metrics data.
+
