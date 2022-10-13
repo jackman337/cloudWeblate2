@@ -42,7 +42,7 @@ CACHES = {
 }
 
 # LDAP
-if os.environ["CLOUDRON_LDAP_URL"] != "":
+if "CLOUDRON_LDAP_URL" in os.environ:
     import ldap
     from django_auth_ldap.config import LDAPSearch, LDAPSearchUnion
 
