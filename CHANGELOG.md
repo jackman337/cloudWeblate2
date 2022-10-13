@@ -435,3 +435,6 @@
 * Improved Burmese punctuation check.
 * Fixed garbage collecting of metrics data.
 
+[1.9.2]
+* Fix app when not using Cloudron user directory
+
