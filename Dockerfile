@@ -11,7 +11,7 @@ RUN apt-get update && \
     libxmlsec1-dev mercurial git-svn libldap2-dev libldap-common libsasl2-dev && \
     rm -rf /var/cache/apt /var/lib/apt/lists /etc/ssh_host_*
 
-ARG VERSION=4.14.1
+ARG VERSION=4.14.2
 
 RUN virtualenv --python=python3 /app/code/weblate-env && \
     . /app/code/weblate-env/bin/activate && \

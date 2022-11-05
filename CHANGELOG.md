@@ -438,3 +438,23 @@
 [1.9.2]
 * Fix app when not using Cloudron user directory
 
+[1.9.3]
+* Update Weblate to 4.14.2
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.14.2)
+* Added support for removing entries from translation memory.
+* Improved analysis on the duplicate language alert.
+* Improved accurancy of the consecutive duplicated words check.
+* Improved scaling of sending many notifications.
+* Improved string state handling for subtitle translation.
+* Deprecated insecure configuration of VCS service API keys via
+* _TOKEN/_USERNAME configuration instead of _CREDENTIALS list.
+* Fixed processing of some uploaded CSV files.
+* Improved whitespace changes handling in diff display.
+* Added automatic suggestions management link to management pages.
+* Track comment removal/resolving in history.
+* Fixed restoring project backups with linked components.
+* Fixed captcha entering on unsuccessful registration.
+* Improved languages support in DeepL.
+* Improved webhooks compatibility with authenticated repositories.
+* Added support for Python 3.11.
+
