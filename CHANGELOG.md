@@ -458,3 +458,27 @@
 * Improved webhooks compatibility with authenticated repositories.
 * Added support for Python 3.11.
 
+[1.10.0]
+* Update Weblate to 4.15.0
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.15)
+* Added support for browsing changes for a individual string.
+* Fixed plurals handling in automatic translation from other components.
+* Added keyboard shortcut Alt+Enter to submit string as a suggestion.
+* Added support for placeables in the Fluent format.
+* Improved performance of translation memory.
+* Autogenerate repoweb browsing links for well known code hosting services.
+* Improved performance of several views.
+* Improved listing of strings with plurals.
+* Added support for adding custom markup to HTML head.
+* Fixed generation of MO files in the add-on to include only translated files.
+* Fixed rendering of regular expression flags.
+* Improved placeholders check behavior with plurals.
+* Added support for translation files naming suitable for Google Play.
+* Added support for labels in API.
+* Added support for choosing different e-mail for commits than for notifications.
+* The Docker image no longer enables debug mode by default.
+* Order glossary terms based on the glossary component priority.
+* Added team administrators who can add or remove members of the team.
+* Added a popup confirmation before deleting users.
+* Added add-on to customize XML output.
+
