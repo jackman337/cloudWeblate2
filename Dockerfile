@@ -1,4 +1,4 @@
-FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd14060332dd88263ea
+FROM cloudron/base:4.0.0@sha256:31b195ed0662bdb06a6e8a5ddbedb6f191ce92e8bee04c03fb02dd4e9d0286df
 
 RUN mkdir -p /app/code
 WORKDIR /app/code
@@ -19,12 +19,12 @@ RUN virtualenv --python=python3 /app/code/weblate-env && \
     pip install pkgconfig && \
     pip install --no-binary cffi Weblate[all]==${VERSION}
 
-RUN mv /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py && \
+RUN mv /app/code/weblate-env/lib/python3.10/site-packages/weblate/settings_example.py /app/code/weblate-env/lib/python3.10/site-packages/weblate/settings.py && \
     sed -e 's,^DATA_DIR = .*$,DATA_DIR = "/app/data/weblate/data",' \
         -e 's,^REGISTRATION_OPEN = .*$,REGISTRATION_OPEN = False,' \
         -e 's,^DEBUG = .*$,DEBUG = False,' \
         -e 's,^DEFAULT_LOGLEVEL = .*$,DEFAULT_LOGLEVEL = "INFO",' \
-        -i /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py
+        -i /app/code/weblate-env/lib/python3.10/site-packages/weblate/settings.py
 
 # Get hub tool
 RUN curl -L https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz | tar zxvf - --strip-components=2 -C /usr/bin hub-linux-amd64-2.14.2/bin/hub
@@ -43,10 +43,10 @@ RUN ln -sf /run/weblate/supervisord.log /var/log/supervisor/supervisord.log
 COPY weblate.ini /etc/uwsgi/apps-enabled/weblate.ini
 
 # Prepare custom hooks
-RUN echo -e "import site\nsite.addsitedir('/app/code/')\nsite.addsitedir('/app/data/')\n" >> /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py
+RUN echo -e "import site\nsite.addsitedir('/app/code/')\nsite.addsitedir('/app/data/')\n" >> /app/code/weblate-env/lib/python3.10/site-packages/weblate/settings.py
 
 # This will run /app/code/cloudron_settings.py
-RUN echo -e 'try:\n\tfrom cloudron_settings import *\nexcept ImportError:\n\traise Exception("A cloudron_settings.py file is required to run this project")\n\n' >> /app/code/weblate-env/lib/python3.8/site-packages/weblate/settings.py
+RUN echo -e 'try:\n\tfrom cloudron_settings import *\nexcept ImportError:\n\traise Exception("A cloudron_settings.py file is required to run this project")\n\n' >> /app/code/weblate-env/lib/python3.10/site-packages/weblate/settings.py
 
 RUN echo -e 'LANG="C.UTF-8"' > /etc/default/locale
 ENV LC_ALL='C.UTF-8'

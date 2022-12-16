@@ -460,6 +460,7 @@
 
 [1.10.0]
 * Update Weblate to 4.15.0
+* Update Cloudron base image to 4.0.0
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.15)
 * Added support for browsing changes for a individual string.
 * Fixed plurals handling in automatic translation from other components.
