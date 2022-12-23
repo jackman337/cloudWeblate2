@@ -28,6 +28,9 @@ fi
 echo "=> Run migration"
 weblate migrate
 
+echo "=> Ensure default groups"
+weblate setupgroups
+
 if [[ ! -f /app/data/.admin_created ]]; then
     echo "=> Ensure admin"
     weblate createadmin --password "changeme123" --username "admin" --email "admin@cloudron.local"
