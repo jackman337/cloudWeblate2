@@ -28,9 +28,6 @@ fi
 echo "=> Run migration"
 weblate migrate
 
-echo "=> Ensure default groups"
-weblate setupgroups
-
 if [[ ! -f /app/data/.admin_created ]]; then
     echo "=> Ensure admin"
     weblate createadmin --password "changeme123" --username "admin" --email "admin@cloudron.local"
@@ -61,7 +58,7 @@ source /app/data/.celery.env
 
 # Required celery env vars
 export CELERY_WORKER_RUNNING=1
-export CELERY_BROKER_URL="${CLOUDRON_REDIS_URL}"
+export CELERY_BROKER_URL="redis://:${CLOUDRON_REDIS_PASSWORD}@${CLOUDRON_REDIS_HOST}"
 export CELERY_RESULT_BACKEND="${CELERY_BROKER_URL}"
 
 echo "=> Starting supervisor"

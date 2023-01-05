@@ -24,13 +24,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ["CLOUDRON_REDIS_URL"],
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "PARSER_CLASS": "redis.connection.HiredisParser",
-            "PASSWORD": os.environ["CLOUDRON_REDIS_PASSWORD"],
-            "CONNECTION_POOL_KWARGS": {},
-        },
+        "LOCATION": "redis://:" + os.environ["CLOUDRON_REDIS_PASSWORD"] + "@" + os.environ["CLOUDRON_REDIS_HOST"],
         "KEY_PREFIX": "weblate",
     },
     "avatar": {
