@@ -447,7 +447,7 @@
 * Improved scaling of sending many notifications.
 * Improved string state handling for subtitle translation.
 * Deprecated insecure configuration of VCS service API keys via
-* _TOKEN/_USERNAME configuration instead of _CREDENTIALS list.
+* `_TOKEN/_USERNAME` configuration instead of `_CREDENTIALS` list.
 * Fixed processing of some uploaded CSV files.
 * Improved whitespace changes handling in diff display.
 * Added automatic suggestions management link to management pages.
@@ -483,4 +483,13 @@
 * Added team administrators who can add or remove members of the team.
 * Added a popup confirmation before deleting users.
 * Added add-on to customize XML output.
+
+[1.10.1]
+* Update Weblate to 5.15.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.15.1)
+* Fixed suggestions from automatic translation.
+* Fixed add-on page crash in some corner cases.
+* Fixed untranslating template for new translations in some cases.
+* Documented licensing using REUSE 3.0.
+* Fixed users pagination on team management.
 
