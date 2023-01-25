@@ -493,3 +493,11 @@
 * Documented licensing using REUSE 3.0.
 * Fixed users pagination on team management.
 
+[1.10.2]
+* Update Weblate to 5.15.2
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.15.2)
+* Enabled gotext JSON and i18next v4 formats in the default
+* configuration.
+* Fixed crash on uploading corrupted files.
+* Show stale directories in Git repository status.
+
