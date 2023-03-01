@@ -501,3 +501,17 @@
 * Fixed crash on uploading corrupted files.
 * Show stale directories in Git repository status.
 
+[1.11.0]
+* Update Weblate to 5.16.0
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.0)
+* Format string checks now also detects duplicated formats.
+* Improved search performance for some specially formatted strings.
+* Celery beat is now storing the tasks schedule in the database.
+* Added support for IBM Watson Language Translator.
+* Dropped support for VCS integration settings deprecated in 4.14.
+* Added support for Bitbucket Server pull requests.
+* Improved conflicts handling in gettext PO files.
+* Added support for defining strings state when adding via API.
+* Added support for configuring CORS allowed origins.
+* Added plurals support to automatic suggestions.
+
