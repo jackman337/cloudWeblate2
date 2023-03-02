@@ -515,3 +515,8 @@
 * Added support for configuring CORS allowed origins.
 * Added plurals support to automatic suggestions.
 
+[1.11.1]
+* Update Weblate to 5.16.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.1)
+* Fixed testsuite error.
+
