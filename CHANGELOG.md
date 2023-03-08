@@ -520,3 +520,13 @@
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.1)
 * Fixed testsuite error.
 
+[1.11.2]
+* Update Wekan to 5.16.2
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.2)
+* Fixed searching in the translation memory.
+* Fixed automatic translation with more services.
+* Improved rendering of overlapping glossary term matches.
+* Fixed plurals parsing for non-English source language in some
+* formats.
+* Added support for go-i18n v2 JSON files.
+
