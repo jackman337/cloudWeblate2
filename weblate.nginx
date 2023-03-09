@@ -40,12 +40,12 @@ http {
 
 
         location ~ ^/favicon.ico$ {
-            alias /app/data/weblate/data/static/favicon.ico;
+            alias /app/data/weblate/data/cache/static/favicon.ico;
             expires 30d;
         }
 
         location /static/ {
-            alias /app/data/weblate/data/static/;
+            alias /app/data/weblate/data/cache/static/;
             expires 30d;
         }
 
