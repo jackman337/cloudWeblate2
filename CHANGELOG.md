@@ -485,7 +485,7 @@
 * Added add-on to customize XML output.
 
 [1.10.1]
-* Update Weblate to 5.15.1
+* Update Weblate to 4.15.1
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.15.1)
 * Fixed suggestions from automatic translation.
 * Fixed add-on page crash in some corner cases.
@@ -494,7 +494,7 @@
 * Fixed users pagination on team management.
 
 [1.10.2]
-* Update Weblate to 5.15.2
+* Update Weblate to 4.15.2
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.15.2)
 * Enabled gotext JSON and i18next v4 formats in the default
 * configuration.
@@ -502,7 +502,7 @@
 * Show stale directories in Git repository status.
 
 [1.11.0]
-* Update Weblate to 5.16.0
+* Update Weblate to 4.16.0
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.0)
 * Format string checks now also detects duplicated formats.
 * Improved search performance for some specially formatted strings.
@@ -516,12 +516,12 @@
 * Added plurals support to automatic suggestions.
 
 [1.11.1]
-* Update Weblate to 5.16.1
+* Update Weblate to 4.16.1
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.1)
 * Fixed testsuite error.
 
 [1.11.2]
-* Update Wekan to 5.16.2
+* Update Weblate to 4.16.2
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.2)
 * Fixed searching in the translation memory.
 * Fixed automatic translation with more services.
@@ -529,4 +529,12 @@
 * Fixed plurals parsing for non-English source language in some
 * formats.
 * Added support for go-i18n v2 JSON files.
+
+[1.11.3]
+* Update Weblate to 4.16.3
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.3)
+* Improved session handling with project backups.
+* Dependencies updates.
+* Localization updates.
+* Documentation improvements.
 
