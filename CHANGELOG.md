@@ -538,3 +538,9 @@
 * Localization updates.
 * Documentation improvements.
 
+[1.11.4]
+* Update Weblate to 4.16.4
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.16.4)
+* Dependencies updates.
+* Improved background tasks scheduling.
+
