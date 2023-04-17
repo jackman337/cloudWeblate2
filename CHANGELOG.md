@@ -544,3 +544,23 @@
 * Dependencies updates.
 * Improved background tasks scheduling.
 
+[1.12.0]
+* Update Weblate to 4.17
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.17)
+* Allow to filter on language in reports.
+* Dropped deprecated command cleanup_celery.
+* Fixed private project visibility for some teams.
+* Automatic translation now honors target state when translating from
+* other components.
+* Improved performance of public user profiles.
+* Improved Sentry performance integration.
+* Added support for Ed25519 SSH key.
+* Rewritten metrics storage.
+* Added support for searching strings by position.
+* Documentation improvements.
+* Unchanged translation check can honor untranslatable terms from
+* glossary.
+* Added automatic fixup for Devanagari danda.
+* Allow downloading project translation memory per language.
+* Added new alert on unused components.
+
