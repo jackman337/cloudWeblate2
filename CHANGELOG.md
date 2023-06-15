@@ -564,3 +564,24 @@
 * Allow downloading project translation memory per language.
 * Added new alert on unused components.
 
+[1.13.0]
+* Update Weblate to 4.18
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.18)
+* Improved API error messages on permission denied.
+* Reduced false positives of the XML checks.
+* Translated check accuracy has been improved.
+* Extended support for Fluent file format.
+* Avoiding signing-out user in some rate-limits.
+* Added support for storing glossary explanation in TBX format.
+* Added support for ordering strings by last update.
+* Extended search capabilities for finding users.
+* Support for automatic update of screenshots from a repository.
+* Improved translation memory performance.
+* Project stats exports to JSON/CSV now include more details; it now matches content available in the API.
+* Added check for reused translation.
+* Highlight suggested change in automatic suggestions.
+* Added dark theme; browser-following and manual setting are available.
+* Added username autocompletion when adding users to a project.
+* Added site-wide search for projects, components, languages and users.
+* New add-on Fill read-only strings with source.
+
