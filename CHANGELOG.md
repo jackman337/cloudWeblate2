@@ -585,3 +585,10 @@
 * Added site-wide search for projects, components, languages and users.
 * New add-on Fill read-only strings with source.
 
+[1.13.1]
+* Update Weblate to 4.18.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.18.1)
+* Fixed language code format for i18next.
+* Fixed CSS compression with dark theme.
+
+*
