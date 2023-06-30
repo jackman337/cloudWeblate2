@@ -591,4 +591,12 @@
 * Fixed language code format for i18next.
 * Fixed CSS compression with dark theme.
 
-*
+[1.13.2]
+* Update Weblate to 4.18.2
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-4.18.2)
+* Fixed parsing notes from TBX.
+* Fixed query parsing in navigation bar search.
+* Fixed language filtering in reports.
+* Improved ModernMT languages mapping.
+* Disabled reused checks on languages with a single plural form.
+
