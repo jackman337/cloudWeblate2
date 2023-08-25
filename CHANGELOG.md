@@ -600,3 +600,7 @@
 * Improved ModernMT languages mapping.
 * Disabled reused checks on languages with a single plural form.
 
+[1.14.0]
+* Update Weblate to 5.0
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-5.0)
+

@@ -23,9 +23,19 @@ DATABASES = {
 # Redis
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
+        "BACKEND": "redis_lock.django_cache.RedisCache",
         "LOCATION": "redis://:" + os.environ["CLOUDRON_REDIS_PASSWORD"] + "@" + os.environ["CLOUDRON_REDIS_HOST"],
+        # If redis is running on same host as Weblate, you might
+        # want to use unix sockets instead:
+        # "LOCATION": "unix:///var/run/redis/redis.sock?db=1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            # If you set password here, adjust CELERY_BROKER_URL as well
+            "PASSWORD": None,
+            "CONNECTION_POOL_KWARGS": {},
+        },
         "KEY_PREFIX": "weblate",
+        "TIMEOUT": 3600,
     },
     "avatar": {
         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
