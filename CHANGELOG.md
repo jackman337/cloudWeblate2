@@ -604,3 +604,21 @@
 * Update Weblate to 5.0
 * [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-5.0)
 
+[1.14.1]
+* Update Weblate to 5.0.1
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-5.0.1)
+* Added :http:get:/api/component-lists/(str:slug)/components/.
+* Related glossary terms lookup is now faster.
+* Logging of failures when creating pull requests.
+* History is now loaded faster.
+* Added object id to all api endpoints.
+* Better performance of projects with a lot of components.
+* Added compatibility redirects for some old URLs.
+* Creating component within a category.
+* Source strings and state display for converted formats.
+* Block component-edit_template on formats which do not support it.
+* check-reused is no longer triggered for blank strings.
+* Performace issues while browsing some categories.
+* Fixed GitHub Team and Organization authentication in Docker container.
+* GitLab merge requests when using a customized SSH port.
+
