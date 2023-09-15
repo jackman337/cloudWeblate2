@@ -622,3 +622,13 @@
 * Fixed GitHub Team and Organization authentication in Docker container.
 * GitLab merge requests when using a customized SSH port.
 
+[1.14.2]
+* Update Weblate to 5.0.2
+* [Full changelog](https://github.com/WeblateOrg/weblate/releases/tag/weblate-5.0.2)
+* Translate page performance.
+* Search now looks for categories as well.
+* Rendering of release notes on GitHub.
+* Listing of categorized projects.
+* Translating a language inside a category.
+* Categories sorting.
+
