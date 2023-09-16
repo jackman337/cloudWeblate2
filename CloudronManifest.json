@@ -1,6 +1,6 @@
 {
   "id": "org.weblate.cloudronapp",
-  "version": "1.14.2",
+  "version": "1.14.2-1",
   "upstreamVersion": "5.0.2",
   "title": "Weblate",
   "tagline": "Web-based continuous localization",
