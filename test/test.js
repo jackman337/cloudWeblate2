@@ -31,10 +31,12 @@ describe('Application life cycle test', function () {
     const ADMIN_PASSWORD = 'changeme123';
     const USERNAME = process.env.USERNAME;
     const PASSWORD = process.env.PASSWORD;
-    const PROJECT_NAME = 'Testproject';
+    const PROJECT_ID = Math.floor((Math.random() * 100) + 1);
+    const PROJECT_NAME = 'Testproject' + PROJECT_ID;
     const PROJECT_WEBSITE = 'https://cloudron.io';
 
     var browser, app;
+    var athenticated_by_oidc = false;
 
     before(function () {
         browser = new Builder().forBrowser('chrome').setChromeOptions(new Options().windowSize({ width: 1280, height: 1024 })).build();
@@ -62,6 +64,30 @@ describe('Application life cycle test', function () {
         await browser.findElement(By.id('id_username')).sendKeys(username);
         await browser.findElement(By.id('id_password')).sendKeys(password);
         await browser.findElement(By.xpath('//input[contains(@value, "Sign in")]')).click();
+
+        await waitForElement(By.xpath('//img[contains(@alt, "User avatar")]'));
+    }
+
+    async function loginOIDC(username, password) {
+        browser.manage().deleteAllCookies();
+        await browser.get(`https://${app.fqdn}/accounts/login`);
+        await browser.sleep(4000);
+
+
+        await browser.findElement(By.xpath('//a[@data-href="/accounts/login/oidc/"]')).click();
+        await browser.sleep(4000);
+
+        if (!athenticated_by_oidc) {
+            await waitForElement(By.xpath('//input[@name="username"]'));
+            await browser.findElement(By.xpath('//input[@name="username"]')).sendKeys(username);
+            await browser.findElement(By.xpath('//input[@name="password"]')).sendKeys(password);
+            await browser.sleep(2000);
+            await browser.findElement(By.xpath('//button[@type="submit" and contains(text(), "Sign in")]')).click();
+            await browser.sleep(2000);
+
+            athenticated_by_oidc = true;
+        }
+
         await waitForElement(By.xpath('//img[contains(@alt, "User avatar")]'));
     }
 
@@ -95,7 +121,7 @@ describe('Application life cycle test', function () {
     it('install app', function () { execSync(`cloudron install --location ${LOCATION}`, EXEC_ARGS); });
 
     it('can get app information', getAppInfo);
-    it('can user login', login.bind(null, USERNAME, PASSWORD));
+    it('can user login OIDC', loginOIDC.bind(null, USERNAME, PASSWORD));
     it('can logout', logout);
     it('can admin login', login.bind(null, ADMIN_EMAIL, ADMIN_PASSWORD));
     it('can create project', createProject);
@@ -104,7 +130,7 @@ describe('Application life cycle test', function () {
 
     it('can restart app', function () { execSync(`cloudron restart --app ${app.id}`); });
 
-    it('can user login', login.bind(null, USERNAME, PASSWORD));
+    it('can user login OIDC', loginOIDC.bind(null, USERNAME, PASSWORD));
     it('can logout', logout);
     it('can admin login', login.bind(null, ADMIN_EMAIL, ADMIN_PASSWORD));
     it('project exists', projectExists);
@@ -119,7 +145,7 @@ describe('Application life cycle test', function () {
         execSync(`cloudron restore --backup ${backups[0].id} --app ${app.id}`, EXEC_ARGS);
     });
 
-    it('can user login', login.bind(null, USERNAME, PASSWORD));
+    it('can user login OIDC', loginOIDC.bind(null, USERNAME, PASSWORD));
     it('can logout', logout);
     it('can admin login', login.bind(null, ADMIN_EMAIL, ADMIN_PASSWORD));
     it('project exists', projectExists);
@@ -132,7 +158,7 @@ describe('Application life cycle test', function () {
     });
 
     it('can get app information', getAppInfo);
-    it('can user login', login.bind(null, USERNAME, PASSWORD));
+    it('can user login OIDC', loginOIDC.bind(null, USERNAME, PASSWORD));
     it('can logout', logout);
     it('can admin login', login.bind(null, ADMIN_EMAIL, ADMIN_PASSWORD));
     it('project exists', projectExists);
@@ -156,7 +182,7 @@ describe('Application life cycle test', function () {
 
     it('can update', function () { execSync(`cloudron update --app ${app.id}`, EXEC_ARGS); });
 
-    it('can user login', login.bind(null, USERNAME, PASSWORD));
+    it('can user login OIDC', loginOIDC.bind(null, USERNAME, PASSWORD));
     it('can logout', logout);
     it('can admin login', login.bind(null, ADMIN_EMAIL, ADMIN_PASSWORD));
     it('project exists', projectExists);

@@ -73,6 +73,26 @@ if "CLOUDRON_LDAP_URL" in os.environ:
         'email': 'mail',
     }
 
+# OpenID Connect
+if "CLOUDRON_OIDC_ISSUER" in os.environ:
+    try:
+        AUTHENTICATION_BACKENDS += ( 'social_core.backends.open_id_connect.OpenIdConnectAuth', )
+    except NameError:
+        AUTHENTICATION_BACKENDS = (
+            'social_core.backends.email.EmailAuth',
+            'weblate.accounts.auth.WeblateUserBackend',
+            'social_core.backends.open_id_connect.OpenIdConnectAuth',
+        )
+    try:
+        REGISTRATION_ALLOW_BACKENDS += ( 'oidc', )
+    except NameError:
+        REGISTRATION_ALLOW_BACKENDS = [ 'oidc', ]
+
+    SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = os.environ["CLOUDRON_OIDC_ISSUER"]
+    SOCIAL_AUTH_OIDC_KEY = os.environ["CLOUDRON_OIDC_CLIENT_ID"]
+    SOCIAL_AUTH_OIDC_SECRET = os.environ["CLOUDRON_OIDC_CLIENT_SECRET"]
+    SOCIAL_AUTH_OIDC_USERNAME_KEY = "sub"
+
 # Email settings
 EMAIL_HOST = os.environ["CLOUDRON_MAIL_SMTP_SERVER"]
 EMAIL_HOST_PASSWORD = os.environ["CLOUDRON_MAIL_SMTP_PASSWORD"]
