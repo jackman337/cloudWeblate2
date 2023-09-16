@@ -20,7 +20,7 @@
   "httpPort": 8000,
   "addons": {
     "localstorage": {},
-    "oidc": { "loginRedirectUri": "/accounts/complete/oidc/" },
+    "ldap": {},
     "postgresql": {},
     "redis": {},
     "sendmail": { "supportsDisplayName": false }
@@ -29,6 +29,6 @@
   "memoryLimit": 3758096384,
   "documentationUrl": "https://docs.cloudron.io/apps/weblate",
   "forumUrl": "https://forum.cloudron.io/category/106/weblate",
-  "minBoxVersion": "7.5.1",
+  "minBoxVersion": "7.4.0",
   "manifestVersion": 2
 }
